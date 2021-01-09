@@ -3990,13 +3990,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcc9dd7e81293f40ab8fc83262e9575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 1428839241}
+  groundTilemap: {fileID: 1428839241}
+  decorationTilemap: {fileID: 1347889941}
+  decorationTilesWithProbability:
+    m_keys:
+    - {fileID: 11400000, guid: a53aa698a67474f2fac8a48dc9bec0f9, type: 2}
+    - {fileID: 11400000, guid: 40211ad2142fd1944968deb8e68fe7f5, type: 2}
+    m_values:
+    - 0.7
+    - 0.3
   tile: {fileID: 11400000, guid: bc3a1f2029efa47be89bd2d87095cb46, type: 2}
   origin: {x: 15, y: -7, z: 0}
   width: 100
   height: 10
   minHeight: 3
   minSectionWidth: 2
+  seed: 100
 --- !u!4 &1954768510
 Transform:
   m_ObjectHideFlags: 0

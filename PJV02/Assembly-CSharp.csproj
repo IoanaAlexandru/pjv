@@ -133,6 +133,9 @@
     <Compile Include="Assets\PennyPixel\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\PennyPixel\Scripts\PhysicsObject.cs" />
     <Compile Include="Assets\PennyPixel\Scripts\PlayerPlatformerController.cs" />
+    <Compile Include="Assets\SerializableDictionary\Example\SerializableDictionaryExample.cs" />
+    <Compile Include="Assets\SerializableDictionary\Example\UserSerializableDictionaries.cs" />
+    <Compile Include="Assets\SerializableDictionary\SerializableDictionary.cs" />
     <None Include="Assets\Add-Ons\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Add-Ons\2D Extras\Brushes\Tint Brush Smooth\Shaders\TintedTilemap.shader" />
     <Reference Include="UnityEngine">

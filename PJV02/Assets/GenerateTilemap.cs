@@ -1,21 +1,32 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Tilemaps;
+
+[Serializable]
+public class TileProbabilityDictionary : SerializableDictionary<RandomTile, float> { };
 
 public class GenerateTilemap : MonoBehaviour
 {
-    [SerializeField] Tilemap tilemap;
+    [SerializeField] Tilemap groundTilemap;
+    [SerializeField] Tilemap decorationTilemap;
+    [SerializeField] TileProbabilityDictionary decorationTilesWithProbability;
     [SerializeField] TileBase tile;
-    [SerializeField] Vector3 origin = new Vector3(0, 0, 0);
+    [SerializeField] Vector3Int origin = new Vector3Int(0, 0, 0);
     [SerializeField] int width = 10;
     [SerializeField] int height = 10;
     [SerializeField] int minHeight = 1;
     [SerializeField] int minSectionWidth = 1;
+    [SerializeField] int seed = 100;
+
+    System.Random random;
 
     // Start is called before the first frame update
     void Start()
     {
+        random = new System.Random(seed.GetHashCode());
+
         var map = GenerateArray(width, height, true);
-        map = RandomWalkTopSmoothed(map, 100);
+        map = RandomWalkTopSmoothed(map);
         RenderMap(map);
     }
 
@@ -45,22 +56,39 @@ public class GenerateTilemap : MonoBehaviour
         for (int x = 0; x < map.GetUpperBound(0); x++)
         {
             //Loop through the height of the map
-            for (int y = 0; y < map.GetUpperBound(1); y++)
+            int y = 0;
+            for (y = 0; y < map.GetUpperBound(1); y++)
             {
                 // 1 = tile, 0 = no tile
                 if (map[x, y] == 1)
                 {
-                    tilemap.SetTile(new Vector3Int(x + (int)origin.x, y + (int)origin.y, 0 + (int)origin.z), tile);
+                    groundTilemap.SetTile(new Vector3Int(x + origin.x, y + origin.y, 0 + origin.z), tile);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            // Got to the top of the platform, add decorations
+            foreach (var tile in decorationTilesWithProbability.Keys)
+            {
+                var p = decorationTilesWithProbability[tile];
+                if (RandomBool(p))
+                {
+                    decorationTilemap.SetTile(new Vector3Int(x + origin.x, y + origin.y, 0 + origin.z), tile);
+                    break;
                 }
             }
         }
     }
 
-    public int[,] RandomWalkTopSmoothed(int[,] map, float seed)
+    public bool RandomBool(float probability)
     {
-        //Seed our random
-        System.Random rand = new System.Random(seed.GetHashCode());
+        return random.Next(100) <= probability * 100;
+    }
 
+    public int[,] RandomWalkTopSmoothed(int[,] map)
+    {
         //Determine the start position
         int lastHeight = minHeight - 1;
 
@@ -73,7 +101,7 @@ public class GenerateTilemap : MonoBehaviour
         for (int x = 0; x <= map.GetUpperBound(0); x++)
         {
             //Determine the next move
-            nextMove = rand.Next(3);
+            nextMove = random.Next(3);
 
             //Only change the height if we have used the current height more than the minimum required section width
             if (nextMove == 0 && lastHeight >= minHeight && sectionWidth > minSectionWidth)

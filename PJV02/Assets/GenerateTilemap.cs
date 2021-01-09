@@ -9,8 +9,11 @@ public class GenerateTilemap : MonoBehaviour
 {
     [SerializeField] Tilemap groundTilemap;
     [SerializeField] Tilemap decorationTilemap;
+    [SerializeField] Tilemap collectibleTilemap;
     [SerializeField] TileProbabilityDictionary decorationTilesWithProbability;
     [SerializeField] TileBase tile;
+    [SerializeField] PrefabTile collectibleTile;
+    [SerializeField] float collectibleProbability;
     [SerializeField] Vector3Int origin = new Vector3Int(0, 0, 0);
     [SerializeField] int width = 10;
     [SerializeField] int height = 10;
@@ -78,6 +81,11 @@ public class GenerateTilemap : MonoBehaviour
                     decorationTilemap.SetTile(new Vector3Int(x + origin.x, y + origin.y, 0 + origin.z), tile);
                     break;
                 }
+            }
+            // Add collectibles
+            if (RandomBool(collectibleProbability))
+            {
+                collectibleTilemap.SetTile(new Vector3Int(x + origin.x, y + origin.y, 0 + origin.z), collectibleTile);
             }
         }
     }

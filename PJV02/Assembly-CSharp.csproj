@@ -129,7 +129,8 @@
     <Compile Include="Assets\CollectableGem\Gems Ultimate Pack\Scripts\AnimationScript.cs" />
     <Compile Include="Assets\CollectableGem\Scripts\GemBehaviour.cs" />
     <Compile Include="Assets\CollectableGem\Scripts\Rotate.cs" />
-    <Compile Include="Assets\GenerateTilemap.cs" />
+    <Compile Include="Assets\Environment\CloudMovement.cs" />
+    <Compile Include="Assets\Environment\GenerateTilemap.cs" />
     <Compile Include="Assets\PennyPixel\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\PennyPixel\Scripts\PhysicsObject.cs" />
     <Compile Include="Assets\PennyPixel\Scripts\PlayerPlatformerController.cs" />

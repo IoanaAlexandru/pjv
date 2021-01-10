@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 11776772}
   - component: {fileID: 11776773}
+  - component: {fileID: 11776774}
   m_Layer: 0
   m_Name: BackgroundClouds_SpriteSheet_2 (1)
   m_TagString: Untagged
@@ -202,6 +203,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &11776774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11776771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0748de9472f1047ae015337f05370b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growing: 1
+  scaleSpeed: 5
 --- !u!1001 &207093602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,7 +318,7 @@ Transform:
   - {fileID: 1347889939}
   - {fileID: 2082328603}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &374293843
 GameObject:
@@ -395,7 +410,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &420612073 stripped
 Transform:
@@ -628,7 +643,7 @@ Transform:
   - {fileID: 588711351}
   - {fileID: 1480158546}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &808969867
 MonoBehaviour:
@@ -657,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4520396350849616, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4520396350849616, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -686,6 +701,11 @@ PrefabInstance:
     - target: {fileID: 4520396350849616, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50915408107096866, guid: 7d60c822c3f1b408ea7a00ecdb5e047a,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
@@ -787,6 +807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1167058249}
   - component: {fileID: 1167058250}
+  - component: {fileID: 1167058251}
   m_Layer: 0
   m_Name: BackgroundClouds_SpriteSheet_0
   m_TagString: Untagged
@@ -858,6 +879,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1167058251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167058248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0748de9472f1047ae015337f05370b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growing: 0
+  scaleSpeed: 5
 --- !u!1001 &1272925988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3752,6 +3787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655871016}
   - component: {fileID: 1655871017}
+  - component: {fileID: 1655871018}
   m_Layer: 0
   m_Name: BackgroundClouds_SpriteSheet_1
   m_TagString: Untagged
@@ -3823,6 +3859,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1655871018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655871015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0748de9472f1047ae015337f05370b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growing: 1
+  scaleSpeed: 5
 --- !u!1001 &1710849668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3890,6 +3940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1841182551}
   - component: {fileID: 1841182552}
+  - component: {fileID: 1841182553}
   m_Layer: 0
   m_Name: BackgroundClouds_SpriteSheet_2
   m_TagString: Untagged
@@ -3961,6 +4012,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1841182553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841182550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0748de9472f1047ae015337f05370b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growing: 1
+  scaleSpeed: 5
 --- !u!1 &1954768508
 GameObject:
   m_ObjectHideFlags: 0
@@ -4021,7 +4086,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2063039872 stripped
 Transform:
@@ -4161,6 +4226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2112536176}
   - component: {fileID: 2112536177}
+  - component: {fileID: 2112536178}
   m_Layer: 0
   m_Name: BackgroundClouds_SpriteSheet_0 (1)
   m_TagString: Untagged
@@ -4232,3 +4298,102 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2112536178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112536175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0748de9472f1047ae015337f05370b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growing: 0
+  scaleSpeed: 5
+--- !u!1001 &376641412322968894
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.722
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.209
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940422, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940423, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 6249589578119219163, guid: 40de94dd6dede824da0c0cdc77e3060b,
+        type: 3}
+    - target: {fileID: 376641412053940423, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: attackInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940429, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_Name
+      value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 376641412053940429, guid: 732f39c90aea50f46902be0ff1864e50,
+        type: 3}
+      propertyPath: m_TagString
+      value: Through
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 732f39c90aea50f46902be0ff1864e50, type: 3}

@@ -7,6 +7,7 @@ public class ProjectileBehaviour : MonoBehaviour
     public bool movingLeft = true;
 
     bool hitSomething = false;
+    bool hitPlayer = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,11 @@ public class ProjectileBehaviour : MonoBehaviour
         if (!collision.CompareTag("Through"))
         {
             StartCoroutine(Disappear());
+        }
+        if (collision.CompareTag("Player") && !hitPlayer)
+        {
+            SceneController.Instance.lives--;
+            hitPlayer = true;
         }
     }
 

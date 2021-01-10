@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6249589578119219142}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e774d9816b2474398f13f88f514fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  movingLeft: 1
+  speed: 6
+  movingLeft: 0
 --- !u!70 &6249589578119219142
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

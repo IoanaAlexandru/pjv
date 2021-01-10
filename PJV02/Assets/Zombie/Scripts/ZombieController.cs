@@ -117,6 +117,7 @@ public class ZombieController : PhysicsObject
     {
         dead = true;
         animator.Play("Zombie_Dead");
+        SceneController.Instance.score++;
         yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length + 0.5f);
         for (float i = 1; i >= 0; i -= Time.deltaTime)
         {

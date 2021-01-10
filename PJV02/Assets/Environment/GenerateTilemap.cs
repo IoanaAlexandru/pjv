@@ -1,27 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [Serializable]
 public class TileProbabilityDictionary : SerializableDictionary<RandomTile, float> { };
 
+[Serializable]
+public class ObjectProbabilityDictionary : SerializableDictionary<GameObject, float> { };
+
 public class GenerateTilemap : MonoBehaviour
 {
-    [SerializeField] Tilemap groundTilemap;
-    [SerializeField] Tilemap decorationTilemap;
-    [SerializeField] Tilemap collectibleTilemap;
-    [SerializeField] TileProbabilityDictionary decorationTilesWithProbability;
-    [SerializeField] TileBase tile;
-    [SerializeField] PrefabTile collectibleTile;
-    [SerializeField] float collectibleProbability;
-    [SerializeField] Vector3Int origin = new Vector3Int(0, 0, 0);
-    [SerializeField] int width = 10;
-    [SerializeField] int height = 10;
-    [SerializeField] int minHeight = 1;
-    [SerializeField] int minSectionWidth = 1;
-    [SerializeField] int seed = 100;
+    public Tilemap groundTilemap;
+    public Tilemap decorationTilemap;
+    public Tilemap collectibleTilemap;
+    public TileProbabilityDictionary decorationTilesWithProbability;
+    public ObjectProbabilityDictionary enemiesWithProbability;
+    public TileBase tile;
+    public PrefabTile collectibleTile;
+    public float collectibleProbability;
+    public Vector3Int origin = new Vector3Int(0, 0, 0);
+    public int width = 10;
+    public int height = 10;
+    public int minHeight = 1;
+    public int minSectionWidth = 1;
+    public int seed = 100;
 
     System.Random random;
+
+    List<Section> sections;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +36,16 @@ public class GenerateTilemap : MonoBehaviour
         random = new System.Random(seed.GetHashCode());
 
         var map = GenerateArray(width, height, true);
-        map = RandomWalkTopSmoothed(map);
-        RenderMap(map);
+        List<Section> sections;
+        (map, sections) = RandomWalkTopSmoothed(map);
+
+        RenderMap(map, sections);
+        this.sections = sections;
+    }
+
+    private void Update()
+    {
+        return;
     }
 
     public static int[,] GenerateArray(int width, int height, bool empty)
@@ -53,7 +68,7 @@ public class GenerateTilemap : MonoBehaviour
         return map;
     }
 
-    public void RenderMap(int[,] map)
+    public void RenderMap(int[,] map, List<Section> sections)
     {
         //Loop through the width of the map
         for (int x = 0; x < map.GetUpperBound(0); x++)
@@ -88,6 +103,29 @@ public class GenerateTilemap : MonoBehaviour
                 collectibleTilemap.SetTile(new Vector3Int(x + origin.x, y + origin.y, 0 + origin.z), collectibleTile);
             }
         }
+
+        // Generate enemies
+        foreach (var section in sections)
+        {
+            foreach (var enemy in enemiesWithProbability.Keys)
+            {
+                var p = enemiesWithProbability[enemy];
+                if (RandomBool(p))
+                {
+                    var newEnemy = Instantiate(enemy, new Vector3((section.center.x + origin.x) * groundTilemap.cellSize.x, (section.center.y + origin.y + 2) * groundTilemap.cellSize.y, 9), Quaternion.identity);
+
+                    float leftLimit = (section.center.x + origin.x - section.width / 2 + 0.5f) * groundTilemap.cellSize.x;
+                    float rightLimit = (section.center.x + origin.x + section.width / 2 - 0.5f) * groundTilemap.cellSize.x;
+
+                    var controller = newEnemy.GetComponent<ZombieController>();
+                    controller.leftLimit = leftLimit;
+                    controller.rightLimit = rightLimit;
+                    controller.movingLeft = RandomBool(0.5f);
+                    
+                    break;
+                }
+            }
+        }
     }
 
     public bool RandomBool(float probability)
@@ -95,8 +133,10 @@ public class GenerateTilemap : MonoBehaviour
         return random.Next(100) <= probability * 100;
     }
 
-    public int[,] RandomWalkTopSmoothed(int[,] map)
+    public (int[,] map, List<Section> sectionCenters) RandomWalkTopSmoothed(int[,] map)
     {
+        var sectionCenters = new List<Section>();
+
         //Determine the start position
         int lastHeight = minHeight - 1;
 
@@ -114,11 +154,13 @@ public class GenerateTilemap : MonoBehaviour
             //Only change the height if we have used the current height more than the minimum required section width
             if (nextMove == 0 && lastHeight >= minHeight && sectionWidth > minSectionWidth)
             {
+                sectionCenters.Add(new Section(new Vector2(x - sectionWidth / 2, lastHeight), sectionWidth));
                 lastHeight--;
                 sectionWidth = 0;
             }
             else if (nextMove == 1 && lastHeight < map.GetUpperBound(1) && sectionWidth > minSectionWidth)
             {
+                sectionCenters.Add(new Section(new Vector2(x - sectionWidth / 2, lastHeight), sectionWidth));
                 lastHeight++;
                 sectionWidth = 0;
             }
@@ -133,6 +175,17 @@ public class GenerateTilemap : MonoBehaviour
         }
 
         //Return the modified map
-        return map;
+        return (map, sectionCenters);
+    }
+}
+
+public struct Section
+{
+    public  Vector2 center;
+    public int width;
+
+    public Section(Vector2 center, int width) {
+        this.center = center;
+        this.width = width;
     }
 }

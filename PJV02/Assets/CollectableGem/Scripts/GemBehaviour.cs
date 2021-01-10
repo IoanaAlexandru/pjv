@@ -29,9 +29,8 @@ public class GemBehaviour : MonoBehaviour
 		gemCollider2D.enabled = false;
 		gemVisuals.SetActive (false);
 		collectedParticleSystem.SetActive (true);
-		Invoke ("DeactivateGemGameObject", durationOfCollectedParticleSystem);
         SceneController.Instance.score++;
-
+        Invoke ("DeactivateGemGameObject", durationOfCollectedParticleSystem);
 	}
 
 	void DeactivateGemGameObject()

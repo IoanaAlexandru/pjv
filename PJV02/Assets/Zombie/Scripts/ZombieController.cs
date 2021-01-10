@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ZombieController : PhysicsObject
 {
+    public GameObject player;
 
     public float maxSpeed = 6;
     public float leftLimit, rightLimit;
@@ -12,7 +13,7 @@ public class ZombieController : PhysicsObject
 
     CapsuleCollider2D zombieCollider;
 
-    bool movingLeft = true;
+    public bool movingLeft = true;
     bool dead = false;
     bool waiting = false;
     bool attacking = false;
@@ -83,6 +84,11 @@ public class ZombieController : PhysicsObject
         while (true)
         {
             yield return new WaitForSeconds(attackInterval);
+
+            if (Vector3.Distance(gameObject.transform.position, player.transform.position) > 10)
+            {
+                continue;
+            }
 
             if (dead)
             {

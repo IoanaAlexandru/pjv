@@ -14,7 +14,7 @@ AnimatorStateMachine:
     m_Position: {x: 300, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7335782466733372363}
-    m_Position: {x: 430, y: 270, z: 0}
+    m_Position: {x: 434, y: 272.71326, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8168596493174562961}
     m_Position: {x: 580, y: -10, z: 0}
@@ -51,7 +51,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fedc7986b72379246928e6a7577adf3d, type: 2}
+  m_Motion: {fileID: 7400000, guid: d6f096fd6bd63dd4ab18f684fa275499, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -100,7 +100,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e5a9c2c507c38444a8d8ba98ecfc16fd, type: 2}
+  m_Motion: {fileID: 7400000, guid: cdb75ebe79aaf0c4dbb4295f374ddda3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -127,7 +127,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 08cad89a04aa6b24b855a8630297c6c5, type: 2}
+  m_Motion: {fileID: 7400000, guid: c15cae7356e66204699dfe84ba24959a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -139,7 +139,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Zombie
+  m_Name: Female_Zombie
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: velocityX
@@ -238,7 +238,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2855a35ebedcdd64085ce9df65497885, type: 2}
+  m_Motion: {fileID: 7400000, guid: 56f7f4b2f4d8a9242a543fdcd74d3ffb, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

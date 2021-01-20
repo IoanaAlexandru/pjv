@@ -64,19 +64,6 @@ namespace UnityChan
 			orgColHight = col.height;
 			orgVectColCenter = col.center;
 		}
-	
-	
-		void Update()
-        {
-			if (Input.GetButtonDown("Fire1"))
-			{
-				anim.SetBool("Attack", true);
-			}
-			if (Input.GetButtonUp("Fire1"))
-			{
-				anim.SetBool("Attack", false);
-			}
-		}
 
 		// 以下、メイン処理.リジッドボディと絡めるので、FixedUpdate内で処理を行う.
 		void FixedUpdate ()
@@ -189,15 +176,14 @@ namespace UnityChan
 			}
 		}
 
-		void OnGUI ()
+		void OnGUI()
 		{
-			GUI.Box (new Rect (Screen.width - 260, 10, 250, 150), "Interaction");
-			GUI.Label (new Rect (Screen.width - 245, 30, 250, 30), "Up/Down Arrow : Go Forwald/Go Back");
-			GUI.Label (new Rect (Screen.width - 245, 50, 250, 30), "Left/Right Arrow : Turn Left/Turn Right");
-			GUI.Label (new Rect (Screen.width - 245, 70, 250, 30), "Hit Space key while Running : Jump");
-			GUI.Label (new Rect (Screen.width - 245, 90, 250, 30), "Hit Spase key while Stopping : Rest");
-			GUI.Label (new Rect (Screen.width - 245, 110, 250, 30), "Left Control : Front Camera");
-			GUI.Label (new Rect (Screen.width - 245, 130, 250, 30), "Alt : LookAt Camera");
+			GUI.Box(new Rect(Screen.width - 260, 10, 250, 150), "Interaction");
+			GUI.Label(new Rect(Screen.width - 245, 30, 250, 30), "Up/Down Arrow : Go Forward/Go Back");
+			GUI.Label(new Rect(Screen.width - 245, 50, 250, 30), "Left/Right Arrow : Turn Left/Turn Right");
+			GUI.Label(new Rect(Screen.width - 245, 70, 250, 30), "Hit Space key while Running : Jump");
+			GUI.Label(new Rect(Screen.width - 245, 90, 250, 30), "Hit Space key while Stopped : Rest");
+			GUI.Label(new Rect(Screen.width - 245, 90, 250, 30), "LMB: Attack");
 		}
 
 

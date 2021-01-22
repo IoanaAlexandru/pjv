@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    public GameObject hand;
+    public Transform hand;
+    public Transform fpsCamera;
     public GameObject[] weapons;
     public Texture2D unarmed;
 
-    GameObject weapon;
+    GameObject weaponObject;
+    public Weapon weapon
+    {
+        get
+        {
+            return weaponObject == null ? unarmedWeapon : weaponObject.GetComponent<Weapon>();
+        }
+    }
     Animator anim;
+
+    Weapon unarmedWeapon;
 
     // singleton
     public static WeaponController instance;
@@ -22,6 +32,7 @@ public class WeaponController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        unarmedWeapon = new Weapon(WeaponType.Unarmed, 5, "Unarmed");
         anim = GameObject.FindWithTag("Player").GetComponent<Animator>();
     }
 
@@ -63,15 +74,23 @@ public class WeaponController : MonoBehaviour
 
     void Equip(GameObject newWeapon)
     {
-        Destroy(weapon);
-        weapon = Instantiate(newWeapon, hand.transform);
-        anim.SetInteger("WeaponType", (int)weapon.GetComponent<Weapon>().type);
+        Destroy(weaponObject);
+        var weaponType = newWeapon.GetComponent<Weapon>().type;
+        if (weaponType == WeaponType.OneHanded)
+        {
+            weaponObject = Instantiate(newWeapon, hand);
+        }
+        else if (weaponType == WeaponType.Gun)
+        {
+            weaponObject = Instantiate(newWeapon, fpsCamera);
+        }
+        anim.SetInteger("WeaponType", (int)weaponObject.GetComponent<Weapon>().type);
     }
 
     void Unequip()
     {
-        Destroy(weapon);
-        weapon = null;
+        Destroy(weaponObject);
+        weaponObject = null;
         anim.SetInteger("WeaponType", (int)WeaponType.Unarmed);
     }
 
@@ -98,7 +117,7 @@ public class WeaponController : MonoBehaviour
             {
                 var name = weapons[i].GetComponent<Weapon>().name;
                 var thumbnail = UnityEditor.AssetPreview.GetAssetPreview(weapons[i]);
-                if (GUI.Toggle(new Rect(Screen.width / 2 - weaponBarSize / 2 + (size + padding) * i, Screen.height - size - padding, size, size), weapon == weapons[i], new GUIContent(thumbnail, name), GUI.skin.button))
+                if (GUI.Toggle(new Rect(Screen.width / 2 - weaponBarSize / 2 + (size + padding) * i, Screen.height - size - padding, size, size), weaponObject == weapons[i], new GUIContent(thumbnail, name), GUI.skin.button))
                 {
                     Equip(weapons[i]);
                 }

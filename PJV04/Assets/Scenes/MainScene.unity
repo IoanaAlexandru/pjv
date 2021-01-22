@@ -888,9 +888,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 11400042, guid: 49f2055d53eeb4e5a92af590a44bddee, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 49f2055d53eeb4e5a92af590a44bddee, type: 3}
---- !u!1 &81140870 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100064, guid: 49f2055d53eeb4e5a92af590a44bddee,
+--- !u!4 &81140871 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400064, guid: 49f2055d53eeb4e5a92af590a44bddee,
     type: 3}
   m_PrefabInstance: {fileID: 4834222}
   m_PrefabAsset: {fileID: 0}
@@ -912,12 +912,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce93c03712bfa064ba7904f75a4b1398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 81140870}
+  hand: {fileID: 81140871}
+  fpsCamera: {fileID: 1753975800}
   weapons:
   - {fileID: 5529973183224909207, guid: ea87f54fac21f7b45a720d2a5f2720f9, type: 3}
   - {fileID: 5108491728579409993, guid: c0c0f079b2ba45d4881a1ef660ea01e2, type: 3}
   - {fileID: 4712871835448155598, guid: 90ff03a678faff74980fa3f660f927ec, type: 3}
   - {fileID: 6807937028962398805, guid: 7022aed2f860e334ba52b380c3ca8513, type: 3}
+  - {fileID: 6790906235081471011, guid: 3e647db261412894680cee9c6192b621, type: 3}
+  - {fileID: 4398579454626564587, guid: 0837d89632e69734e8561ed052bb0590, type: 3}
   unarmed: {fileID: 2800000, guid: d9e4f96c4fce60744ab92fb4fca7289b, type: 3}
 --- !u!4 &198138819 stripped
 Transform:
@@ -1298,6 +1301,7 @@ GameObject:
   - component: {fileID: 1753975803}
   - component: {fileID: 1753975802}
   - component: {fileID: 1753975801}
+  - component: {fileID: 1753975804}
   m_Layer: 8
   m_Name: FPS Camera
   m_TagString: MainCamera
@@ -1390,3 +1394,17 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1753975804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753975799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f63c7d41babb094790a52ffbc5ece53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  damage: 10

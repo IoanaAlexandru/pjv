@@ -12,16 +12,10 @@ public class Weapon : MonoBehaviour
 {
     public WeaponType type;
     public int damage;
+    string name;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        name = GetComponent<MeshFilter>().name.Split()[0];
     }
 }

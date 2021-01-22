@@ -178,12 +178,12 @@ namespace UnityChan
 
 		void OnGUI()
 		{
-			GUI.Box(new Rect(Screen.width - 260, 10, 250, 150), "Interaction");
+			GUI.Box(new Rect(Screen.width - 260, 10, 250, 130), "Interaction");
 			GUI.Label(new Rect(Screen.width - 245, 30, 250, 30), "Up/Down Arrow : Go Forward/Go Back");
 			GUI.Label(new Rect(Screen.width - 245, 50, 250, 30), "Left/Right Arrow : Turn Left/Turn Right");
 			GUI.Label(new Rect(Screen.width - 245, 70, 250, 30), "Hit Space key while Running : Jump");
 			GUI.Label(new Rect(Screen.width - 245, 90, 250, 30), "Hit Space key while Stopped : Rest");
-			GUI.Label(new Rect(Screen.width - 245, 90, 250, 30), "LMB: Attack");
+			GUI.Label(new Rect(Screen.width - 245, 110, 250, 30), "LMB: Attack");
 		}
 
 

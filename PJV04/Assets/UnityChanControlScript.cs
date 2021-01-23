@@ -65,6 +65,36 @@ namespace UnityChan
 			orgVectColCenter = col.center;
 		}
 
+        private void Update()
+        {
+			var closestEnemy = FindClosestEnemy();
+			var dist = Vector3.Distance(closestEnemy.transform.position, transform.position);
+			if (dist < 2)
+            {
+				transform.LookAt(closestEnemy.transform);
+            }
+        }
+
+		public GameObject FindClosestEnemy()
+		{
+			GameObject[] gos;
+			gos = GameObject.FindGameObjectsWithTag("Enemy");
+			GameObject closest = null;
+			float distance = Mathf.Infinity;
+			Vector3 position = transform.position;
+			foreach (GameObject go in gos)
+			{
+				Vector3 diff = go.transform.position - position;
+				float curDistance = diff.sqrMagnitude;
+				if (curDistance < distance)
+				{
+					closest = go;
+					distance = curDistance;
+				}
+			}
+			return closest;
+		}
+
 		// 以下、メイン処理.リジッドボディと絡めるので、FixedUpdate内で処理を行う.
 		void FixedUpdate ()
 		{

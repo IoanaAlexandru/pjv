@@ -5,6 +5,7 @@
 //
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace UnityChan
 {
@@ -15,6 +16,8 @@ namespace UnityChan
 
 	public class UnityChanControlScript : MonoBehaviour
 	{
+		public int health = 100;
+		public Slider healthBar;
 
 		public float animSpeed = 1.5f;				// アニメーション再生速度設定
 		public float lookSmoother = 3.0f;			// a smoothing setting for camera motion
@@ -50,6 +53,30 @@ namespace UnityChan
 		static int jumpState = Animator.StringToHash ("Base Layer.Jump");
 		static int restState = Animator.StringToHash ("Base Layer.Rest");
 
+		public void TakeDamage(int dmg)
+		{
+			health -= dmg;
+			if (health <= 0)
+			{
+				anim.Play("Dead");
+			}
+			else
+			{
+				anim.SetTrigger("Damaged");
+			}
+        }
+
+		public void FinishAttack()
+        {
+
+			var closestEnemy = FindClosestEnemy();
+			var dist = Vector3.Distance(closestEnemy.transform.position, transform.position);
+			if (dist < 2)
+			{
+				closestEnemy.GetComponent<FoxController>().health -= WeaponController.instance.weapon.damage;
+			}
+		}
+
 		// 初期化
 		void Start ()
 		{
@@ -67,6 +94,8 @@ namespace UnityChan
 
         private void Update()
         {
+			healthBar.value = health;
+
 			var closestEnemy = FindClosestEnemy();
 			var dist = Vector3.Distance(closestEnemy.transform.position, transform.position);
 			if (dist < 2)

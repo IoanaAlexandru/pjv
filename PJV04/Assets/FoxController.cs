@@ -34,6 +34,8 @@ public class FoxController : MonoBehaviour
     {
         if (dead)
         {
+            Destroy(GetComponent<Rigidbody>());
+            Destroy(GetComponent<CapsuleCollider>());
             return;
         }
 

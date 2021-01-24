@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     public Transform hand;
-    public Transform fpsCamera;
+    public GameObject fpsCamera;
     public GameObject[] weapons;
     public Texture2D unarmed;
 
@@ -41,11 +41,27 @@ public class WeaponController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            anim.SetBool("Attack", true);
+            if (weapon.type == WeaponType.Gun)
+            {
+                var hit = fpsCamera.GetComponent<CameraController1stPerson>().hit;
+                weapon.StartShooting(hit);
+            }
+            else
+            {
+                anim.SetBool("Attack", true);
+            }
         }
         if (Input.GetButtonUp("Fire1"))
         {
-            anim.SetBool("Attack", false);
+            if (weapon.type == WeaponType.Gun)
+            {
+                var hit = fpsCamera.GetComponent<CameraController1stPerson>().hit;
+                weapon.StopShooting();
+            }
+            else
+            {
+                anim.SetBool("Attack", false);
+            }
         }
 
         for (var i = 0; i < 9; i++)
@@ -82,7 +98,7 @@ public class WeaponController : MonoBehaviour
         }
         else if (weaponType == WeaponType.Gun)
         {
-            weaponObject = Instantiate(newWeapon, fpsCamera);
+            weaponObject = Instantiate(newWeapon, fpsCamera.transform);
         }
         anim.SetInteger("WeaponType", (int)weaponObject.GetComponent<Weapon>().type);
     }

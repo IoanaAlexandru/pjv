@@ -72,4 +72,13 @@ public class FoxController : MonoBehaviour
         }
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Projectile")
+        {
+            health -= 10;
+            Destroy(collision.gameObject);
+        }
+    }
 }

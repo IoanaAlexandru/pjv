@@ -4,7 +4,6 @@ using System.Collections.Generic;
 [AddComponentMenu("Camera-Control/Smooth Mouse Look")]
 public class CameraController1stPerson : MonoBehaviour
 {
-
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
     public RotationAxes axes = RotationAxes.MouseXAndY;
     public float sensitivityX = 15F;
@@ -21,6 +20,23 @@ public class CameraController1stPerson : MonoBehaviour
     float rotAverageY = 0F;
     public float frameCounter = 20;
     Quaternion originalRotation;
+
+    public SpriteRenderer crosshair;
+    public RaycastHit hit;
+
+    private void FixedUpdate()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        {
+            if (hit.transform.tag == "Enemy")
+            {
+                crosshair.color = Color.red;
+                return;
+            }
+        }
+        crosshair.color = Color.white;
+    }
+
     void Update()
     {
         if (axes == RotationAxes.MouseXAndY)

@@ -38,7 +38,7 @@ namespace UnityChan
 		private CapsuleCollider col;
 		private Rigidbody rb;
 		// キャラクターコントローラ（カプセルコライダ）の移動量
-		private Vector3 velocity;
+		public Vector3 velocity;
 		// CapsuleColliderで設定されているコライダのHeiht、Centerの初期値を収める変数
 		private float orgColHight;
 		private Vector3 orgVectColCenter;

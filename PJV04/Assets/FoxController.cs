@@ -39,7 +39,10 @@ public class FoxController : MonoBehaviour
             return;
         }
 
-        healthBar.value = health;
+        if (attacking || running)
+        {
+            healthBar.value = health;
+        }
         if (health <= 0 && !dead)
         {
             dead = true;
